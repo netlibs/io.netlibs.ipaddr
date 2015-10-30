@@ -1,6 +1,6 @@
 package com.jive.oss.commons.ip;
 
-public final class IPv4Address extends AbstractIPAddress
+public final class IPv4Address
 {
 
   private final long value;
