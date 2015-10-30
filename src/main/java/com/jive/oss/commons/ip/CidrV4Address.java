@@ -118,6 +118,12 @@ public class CidrV4Address
   }
 
   @Override
+  public String toString()
+  {
+    return String.format("%s/%s", IPv4Address.of(this.prefix), this.mask);
+  }
+
+  @Override
   public boolean equals(final Object other)
   {
     if (other instanceof CidrV4Address)
