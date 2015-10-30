@@ -1,0 +1,34 @@
+<settings>
+  <servers>
+    <server>
+      <id>artifactory</id>
+      <username>${env.ARTIFACTORY_USER}</username>
+      <password>${env.ARTIFACTORY_API_KEY}</password>
+    </server>
+  </servers>
+
+  <profiles>
+    <profile>
+      <repositories>
+        <repository>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+		  <releases>
+			  <enabled>false</enabled>
+		  </releases>
+		  <id>artifactory</id>
+          <name>artifactory</name>
+          <url>https://getjive.artifactoryonline.com/getjive/libs-snapshot-local</url>
+        </repository>
+      </repositories>
+      <id>bintray</id>
+    </profile>
+  </profiles>
+
+  <activeProfiles>
+    <activeProfile>bintray</activeProfile>
+  </activeProfiles>
+
+
+</settings>
