@@ -1,5 +1,12 @@
 package com.jive.oss.commons.ip;
 
+/**
+ * Instances of this represent specific IPv4 addresses.
+ *
+ * @author theo
+ *
+ */
+
 public final class IPv4Address
 {
 

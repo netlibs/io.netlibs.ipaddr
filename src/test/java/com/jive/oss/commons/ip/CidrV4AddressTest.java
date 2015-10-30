@@ -16,6 +16,32 @@ public class CidrV4AddressTest
     Assert.assertFalse(IPv4Address.fromString("8.255.255.255").within(CidrV4Address.fromString("8.0/16")));
     CidrV4Address.fromString("8.0.0/24");
     CidrV4Address.fromString("8.0.0.0/32");
+    CidrV4Address.fromString("127.0.0.0/24");
+    CidrV4Address.fromString("127.0.0.1/32");
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testInvalid1()
+  {
+    CidrV4Address.fromString("127.0.0.1/24");
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testInvalid2()
+  {
+    CidrV4Address.fromString("127.0.0.1/31");
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testInvalid3()
+  {
+    CidrV4Address.fromString("127.0.0.1/16");
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testInvalid4()
+  {
+    CidrV4Address.fromString("10.0.0.1/0");
   }
 
 }

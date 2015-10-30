@@ -1,5 +1,15 @@
 package com.jive.oss.commons.ip;
 
+/**
+ * Instances represent an IP address along with a mask which unlike a CIDR which is distingished by not having any host bits set,
+ * {@link QualifiedIPv4Address} includes the whole host address.
+ *
+ * This is commonly used to describe an interface's IP address along with it's network.
+ *
+ * @author theo
+ *
+ */
+
 public class QualifiedIPv4Address
 {
 

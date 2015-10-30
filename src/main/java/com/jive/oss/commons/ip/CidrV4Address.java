@@ -1,7 +1,9 @@
 package com.jive.oss.commons.ip;
 
 /**
- * A v4 prefix and mask, The prefix may be between 1 and 4 octets.
+ * An IPv4 address prefix and mask, The prefix may be between 1 and 4 octets.
+ *
+ * A CIDR address doesn't allow the host bits to be set.
  *
  * @author theo
  *
@@ -25,8 +27,20 @@ public class CidrV4Address
     {
       throw new IllegalArgumentException("invalid mask");
     }
+
+    if ((mask == 0) && (prefix != 0))
+    {
+      throw new IllegalArgumentException("/0 may not have host bits");
+    }
+
+    if ((((1 << (32 - mask)) - 1) & prefix) != 0)
+    {
+      throw new IllegalArgumentException("CIDR may not have host bits set");
+    }
+
     this.prefix = prefix;
     this.mask = mask;
+
   }
 
   public long prefix()
@@ -66,6 +80,15 @@ public class CidrV4Address
   public static CidrV4Address fromParts(final String prefix, final int mask)
   {
     return new CidrV4Address(parsePrefix(prefix), mask);
+  }
+
+  /**
+   *
+   */
+
+  public static CidrV4Address fromParts(final IPv4Address prefix, final int mask)
+  {
+    return new CidrV4Address(prefix.value(), mask);
   }
 
   public static long parsePrefix(String ipv4String)
@@ -110,11 +133,6 @@ public class CidrV4Address
 
     return value;
 
-  }
-
-  public static CidrV4Address fromParts(final IPv4Address prefix, final int mask)
-  {
-    return new CidrV4Address(prefix.value(), mask);
   }
 
   @Override
