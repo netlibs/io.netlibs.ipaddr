@@ -71,17 +71,16 @@ public class IPv6Address
     if (ipv6String.contains("::")){
       for(int i=0; i<ipv6String.length(); i++){
         char thisChar = ipv6String.charAt(i);
-        if (thisChar == ':' || i == ipv6String.length()-1){
+        if (thisChar == ':'){
           // specifically check for null start of the address (used in some cases -
           // like the default route and v6-mapped-v4 addresses)
-          if ((i-1 > 0) && !(ipv6String.charAt(i-1) == ':'))
+          if ((i != 0) && !(ipv6String.charAt(i-1) == ':'))
             number_hexlets++;
-        }
+        } 
       }
       for(int i=number_hexlets+1; i < 8; i++){
         pad_string += "0:";
       }
-      // check that we resolve cases with leading zeros correctly
       
       ipv6String = ipv6String.replace("::", ":" + pad_string + "");
       if (ipv6String.startsWith(":"))
@@ -101,6 +100,7 @@ public class IPv6Address
         throw new IllegalArgumentException(String.format("Invalid IPv6 Address: %s", inputString));
       }
     }
+    
     
     // add last hexlet
     value = addHexlet(value, current_hexlet);
