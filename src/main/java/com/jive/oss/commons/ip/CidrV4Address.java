@@ -1,5 +1,7 @@
 package com.jive.oss.commons.ip;
 
+import java.nio.ByteBuffer;
+
 /**
  * An IPv4 address prefix and mask, The prefix may be between 1 and 4 octets.
  *
