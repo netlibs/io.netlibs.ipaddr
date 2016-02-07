@@ -1,7 +1,5 @@
 package com.jive.oss.commons.ip;
 
-import java.nio.ByteBuffer;
-
 /**
  * An IPv4 address prefix and mask, The prefix may be between 1 and 4 octets.
  *
@@ -135,6 +133,16 @@ public class CidrV4Address
 
     return value;
 
+  }
+
+  @Override
+  public int hashCode()
+  {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + Long.hashCode(this.prefix);
+    result = prime * result + this.mask;
+    return result;
   }
 
   @Override
