@@ -50,7 +50,6 @@ public final class IPv4Address
     final long mask = (1L << (32 - prefixLength)) - 1;
     return new IPv4Address(this.value | mask);
   }
-  
 
   /**
    *
@@ -168,6 +167,24 @@ public final class IPv4Address
   {
     final long mask = ~((1L << (32 - prefixLength)) - 1);
     return (this.value() & mask) == prefix;
+  }
+
+  public long longValue()
+  {
+    return this.value;
+  }
+
+  /**
+   * Mask all the host bits for the given prefix.
+   * 
+   * So 8.8.8.8/24 will become 8.8.8.0.
+   * 
+   */
+
+  public IPv4Address mask(int prefixLength)
+  {
+    final long mask = ~((1L << (32 - prefixLength)) - 1);
+    return IPv4Address.of((this.value() & mask));
   }
 
 }

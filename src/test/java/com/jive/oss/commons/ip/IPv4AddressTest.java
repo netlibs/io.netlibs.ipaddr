@@ -13,4 +13,11 @@ public class IPv4AddressTest
     System.err.println(addr.value());
   }
 
+  @Test
+  public void testMasks()
+  {
+    final IPv4Address addr = IPv4Address.fromString("255.255.255.255");
+    System.err.println(addr.mask(23));
+  }
+
 }
