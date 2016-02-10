@@ -1,5 +1,7 @@
 package com.jive.oss.commons.ip;
 
+import java.net.InetAddress;
+
 /**
  * Instances of this represent specific IPv4 addresses.
  *
@@ -185,6 +187,11 @@ public final class IPv4Address
   {
     final long mask = ~((1L << (32 - prefixLength)) - 1);
     return IPv4Address.of((this.value() & mask));
+  }
+
+  public static IPv4Address fromAddress(InetAddress address)
+  {
+    return IPv4Address.fromString(address.getHostAddress());
   }
 
 }
