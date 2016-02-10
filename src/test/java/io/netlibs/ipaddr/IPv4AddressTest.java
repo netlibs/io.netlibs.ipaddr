@@ -1,6 +1,8 @@
-package com.jive.oss.commons.ip;
+package io.netlibs.ipaddr;
 
 import org.junit.Test;
+
+import io.netlibs.ipaddr.IPv4Address;
 
 public class IPv4AddressTest
 {

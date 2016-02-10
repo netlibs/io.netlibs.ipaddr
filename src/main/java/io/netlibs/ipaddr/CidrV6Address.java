@@ -1,4 +1,4 @@
-package com.jive.oss.commons.ip;
+package io.netlibs.ipaddr;
 
 import java.math.BigInteger;
 import java.util.stream.IntStream;

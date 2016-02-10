@@ -1,7 +1,10 @@
-package com.jive.oss.commons.ip;
+package io.netlibs.ipaddr;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import io.netlibs.ipaddr.CidrV4Address;
+import io.netlibs.ipaddr.IPv4Address;
 
 public class CidrV4AddressTest
 {

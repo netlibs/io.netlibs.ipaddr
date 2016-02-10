@@ -1,4 +1,4 @@
-package com.jive.oss.commons.ip;
+package io.netlibs.ipaddr;
 
 import static org.junit.Assert.*;
 
@@ -12,6 +12,8 @@ import java.util.Map;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import io.netlibs.ipaddr.IPv6Address;
 
 public class IPv6AddressTest
 {

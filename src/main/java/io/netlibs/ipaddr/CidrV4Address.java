@@ -1,4 +1,4 @@
-package com.jive.oss.commons.ip;
+package io.netlibs.ipaddr;
 
 /**
  * An IPv4 address prefix and mask, The prefix may be between 1 and 4 octets.

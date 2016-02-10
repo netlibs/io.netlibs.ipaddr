@@ -1,10 +1,12 @@
-package com.jive.oss.commons.ip;
+package io.netlibs.ipaddr;
 
 
 import java.math.BigInteger;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import io.netlibs.ipaddr.CidrV6Address;
 
 
 public class CidrV6AddressTest

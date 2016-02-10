@@ -1,7 +1,9 @@
-package com.jive.oss.commons.ip;
+package io.netlibs.ipaddr;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import io.netlibs.ipaddr.QualifiedIPv4Address;
 
 public class QualifiedIPv4AddressTest
 {

@@ -1,4 +1,4 @@
-package com.jive.oss.commons.ip;
+package io.netlibs.ipaddr;
 
 import java.net.InetAddress;
 

@@ -1,4 +1,4 @@
-package com.jive.oss.commons.ip;
+package io.netlibs.ipaddr;
 
 /**
  * Instances represent an IP address along with a mask which unlike a CIDR which is distingished by not having any host bits set,
