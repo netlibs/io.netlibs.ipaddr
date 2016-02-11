@@ -1,5 +1,7 @@
 package io.netlibs.ipaddr;
 
+import static org.junit.Assert.*;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -45,6 +47,14 @@ public class CidrV4AddressTest
   public void testInvalid4()
   {
     CidrV4Address.fromString("10.0.0.1/0");
+  }
+
+  @Test
+  public void testWithin()
+  {
+    assertTrue(CidrV4Address.fromString("8.0.0.0/8").isPrefixOf(CidrV4Address.fromString("8.8.0.0/32")));
+    assertTrue(CidrV4Address.fromString("8.0.0.0/8").isPrefixOf(CidrV4Address.fromString("8.8.8.8/32")));
+    assertFalse(CidrV4Address.fromString("6.0.0.0/8").isPrefixOf(CidrV4Address.fromString("8.0.0.0/8")));
   }
 
 }

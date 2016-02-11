@@ -23,6 +23,7 @@ public class CidrV4Address
 
   private CidrV4Address(final long prefix, final int mask)
   {
+
     if ((mask < 0) || (mask > 32))
     {
       throw new IllegalArgumentException("invalid mask");
@@ -156,22 +157,48 @@ public class CidrV4Address
   {
     if (other instanceof CidrV4Address)
     {
-      
+
       final CidrV4Address addr = (CidrV4Address) other;
-      
+
       if (addr.prefix != this.prefix)
       {
         return false;
       }
-      
+
       if (addr.mask != this.mask)
       {
         return false;
       }
-      
+
       return true;
     }
     return false;
+  }
+
+  
+  
+  public boolean isPrefixOf(CidrV4Address key)
+  {
+    
+
+
+    if (mask() > key.mask())
+    {
+      return false;
+    }
+
+    if (mask() == key.mask())
+    {
+      return key.prefix() == prefix();
+    }
+
+    int mask = ~0 << (Integer.SIZE - mask());
+
+    int km = mask & (int) key.prefix();
+    int pm = mask & (int) prefix();
+
+    return (km == pm);
+
   }
 
 }

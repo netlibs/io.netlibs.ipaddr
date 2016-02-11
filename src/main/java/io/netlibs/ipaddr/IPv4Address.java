@@ -165,7 +165,7 @@ public final class IPv4Address
     return this.within(mask.prefix(), mask.mask());
   }
 
-  private boolean within(final long prefix, final int prefixLength)
+  public boolean within(final long prefix, final int prefixLength)
   {
     final long mask = ~((1L << (32 - prefixLength)) - 1);
     return (this.value() & mask) == prefix;
