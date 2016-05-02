@@ -9,7 +9,7 @@ import java.net.InetAddress;
  *
  */
 
-public final class IPv4Address
+public final class IPv4Address implements IpAddress
 {
 
   private final long value;
