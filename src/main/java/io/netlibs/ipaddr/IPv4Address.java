@@ -1,6 +1,7 @@
 package io.netlibs.ipaddr;
 
 import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 /**
  * Instances of this represent specific IPv4 addresses.
@@ -95,7 +96,7 @@ public final class IPv4Address implements IpAddress
       else if (ch == '.')
       {
         octetCount++;
-        value = addOctet(value, octet);
+        value = IPv4Address.addOctet(value, octet);
         octet = 0;
       }
       else
@@ -110,9 +111,9 @@ public final class IPv4Address implements IpAddress
       throw new IllegalArgumentException("Invalid number of octets");
     }
 
-    value = addOctet(value, octet);
+    value = IPv4Address.addOctet(value, octet);
 
-    return of(value);
+    return IPv4Address.of(value);
 
   }
 
@@ -178,20 +179,30 @@ public final class IPv4Address implements IpAddress
 
   /**
    * Mask all the host bits for the given prefix.
-   * 
+   *
    * So 8.8.8.8/24 will become 8.8.8.0.
-   * 
+   *
    */
 
-  public IPv4Address mask(int prefixLength)
+  public IPv4Address mask(final int prefixLength)
   {
     final long mask = ~((1L << (32 - prefixLength)) - 1);
     return IPv4Address.of((this.value() & mask));
   }
 
-  public static IPv4Address fromAddress(InetAddress address)
+  public static IPv4Address fromAddress(final InetAddress address)
   {
     return IPv4Address.fromString(address.getHostAddress());
+  }
+
+  @Override
+  public InetAddress toInetAddress() {
+    try {
+      return InetAddress.getByName(this.toString());
+    }
+    catch (final UnknownHostException e) {
+      throw new IllegalArgumentException(e);
+    }
   }
 
 }
